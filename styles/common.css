@@ -1,0 +1,36 @@
+html{height:100%;}
+body{height:85%;}
+#keret{position:relative;width:85%;height:100%;margin:18px auto 18px auto;-moz-border-radius:40px;-webkit-border-radius:40px;-khtml-border-radius:40px;border-radius:40px;-moz-box-shadow:5px 5px 15px #888;-webkit-box-shadow:5px 5px 15px #888;-khtml-box-shadow:5px 5px 15px #888;box-shadow:5px 5px 15px #888;border:solid 1px #999;visibility:visible;background:url('../images/gradient.png') repeat-x fixed;}
+#header{height:30%;width:100%;top:5%;position:absolute;}
+#footer{height:20%;width:100%;left:0%;bottom:0%;position:absolute;}
+#nav{height:45%;top:35%;left:2%;position:absolute;}
+#aside{height:45%;width:16%;top:35%;right:2%;position:absolute;}
+form{height:45%;top:35%;position:absolute;color:#666;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:normal;margin-top:0;}
+.section{position:absolute;margin-top:10px;height:100%;width:100%;}
+#avatar_img_container{visibility:hidden;display:block;top:80%;left:2%;position:absolute;height:50px;width:50px;}
+#avatar_url{visibility:hidden;display:none;}
+#submit_print{visibility:hidden;display:none;}
+.article{height:32px;}
+#home{visibility:visible;}
+#login_window{visibility:hidden;}
+#validate_section{visibility:hidden;}
+#ldap_info_section{visibility:hidden;}
+#pass_reminder_section{visibility:hidden;}
+#content1{visibility:hidden;}
+#content2{visibility:hidden;}
+#content3{visibility:hidden;}
+#content4{visibility:hidden;}
+#eula{width:85%;height:50%;resize:none;}
+a{color:#666;text-decoration:underline;}
+img{border:0;}
+.textbox{padding:2px 5px 1px;margin:0 5px 5px;outline:none;border:1px solid #666;outline-width:1px;float:right;}
+.textbox:hover{border:1px solid #e66;}
+label{margin:0 0 12px 3px;clear:left;text-align:right;float:left;}
+p{color:#666;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:normal;margin-top:0;}
+h1{color:#999;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;line-height:32px;margin-top:4px;}
+h2{color:#999;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:normal;margin:0.83em 0 0;}
+#cim{color:#666;font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:bold;text-align:center;letter-spacing:-1px;width:auto;margin-left:auto;margin-right:auto;}
+#copyright{font-weight:bold;text-align:center;margin:1.33em 0;width:100%;margin-left:auto;margin-right:auto;position:absolute;bottom:2%;}
+#next_btn{background-color:#6d4;position:absolute;left:85%;top:0%;}
+#prev_btn{background-color:#d64;position:absolute;left:55%;top:0%;}
+#devel{position:absolute; bottom:-50px; left:0px; width:100%; height:20px;}

@@ -1,0 +1,13 @@
+#header,#nav,#aside,#footer,#avatar_img_container,#avatar_url{visibility:hidden;display:none;}
+form{height:100%;}
+.section{font-size:12px}
+#content1{visibility:visible !important;}
+#content2{visibility:visible !important;}
+#content3{visibility:visible !important;}
+#content4{visibility:visible !important;}
+p{color:#666;font-size:12px;font-family:sans-serif;}
+form{color:#666;font-size:12px;font-family:sans-serif;}
+a{color:#666;text-decoration:underline;}
+img{border:0;}
+.textbox{padding:2px 5px 1px;margin:0 5px 5px;outline:none;border:1px solid #666;outline-width:1px;}
+.textbox:hover{border:1px solid #e66;}

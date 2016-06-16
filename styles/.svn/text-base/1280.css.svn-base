@@ -1,0 +1,11 @@
+#keret{min-height:650px;min-width:910px;}
+#nav{width:20%;}
+.section{font-size:16px;}
+form{left:22%;width:60%;}
+p{font-size:16px;}
+form{font-size:16px;}
+h1{font-size:20px;}
+h2{font-size:18px;}
+#cim{font-size:60px;}
+#next_btn{-moz-border-radius:10px;-webkit-border-radius:10px;-khtml-border-radius:10px;border-radius:10px;width:100px;height:22px;}
+#prev_btn{-moz-border-radius:10px;-webkit-border-radius:10px;-khtml-border-radius:10px;border-radius:10px;width:100px;height:22px;}

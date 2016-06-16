@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="expires" content="0" />
+		<meta name="description" content="netreg-alpha" />
+		<meta name="keywords" content="netreg, hálózati, regisztráció, ktk, kármán, kolinet" />
+		<meta name="robots" content="none" />
+		<title>netreg-alpha9</title>
+		<link rel="icon" type="image/png" href="images/gpk16x16.png" />
+		<link rel="stylesheet" href="styles/win.css" type="text/css" media="screen, not handheld, not print" disabled="disabled" /> <!-- ez nem valid -->
+		<link rel="stylesheet" href="styles/win.css" type="text/css" media="screen, not handheld, not print" />
+		<link rel="stylesheet" href="styles/print.css" type="text/css" media="handheld, print" />
+
+		<script src="scripts/form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/ajax_validate.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/switch_css.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/context_help.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/ldap_info.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/english.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+
+	<body>
+
+	<div id="keret">
+		<div id="avatar_img_container">
+			<img id="avatar_img" src="images/gpk16x16.png" alt="Avatar" />
+		</div>
+		<div id="devel">
+			 <p>css: <a href="javascript:switch_css('1024');">1024</a> <a href="javascript:switch_css('1280');">1280</a> <a href="javascript:switch_css('print');">print</a> <a href="javascript:switch_css('win');">win</a></p>
+			<p><a href="javascript:force_next();">force next</a></p>
+			<p><a href="javascript:toEnglish();">ENGLISH</a></p>
+		</div>
+		<div id="header">
+			<p id="cim">netreg v0.2.9</p>
+		</div>		
+		<div id="nav">
+			<h2 class="no_win">Üdvözlünk a Kármán Tódor Kollégium hálózati regisztrációs oldalán!</h2>
+			<p class="no_win">Have a nice stay. ;)</p>
+		</div>
+		<div id="aside">
+			<p id="aside_p">A későbbiekben minden adatodat a <a href="#"><em>valami portálon</em></a> módosíthatod.</p>
+		</div>
+		<form method="post" enctype="multipart/form-data" action="signup.php" id="form1" name="form1" onsubmit="return form_check();" autocomplete="off">
+			<div class="section" id="home">
+				<div class="article">
+					<label id="lbl_what" for="what">Mit szeretnél? :)</label>
+					<select id="what" name="what">
+						<option value="validate">Teljesen új reget</option>
+						<option value="new">Befejezni a reget (van kódom)</option>
+						<option value="old">Van már minden</option>
+					</select>
+				</div>
+			</div>
+			<div class="section" id="validate_section">
+				<div class="article">
+					<label id="lbl_login" for="login">KTK login:</label>
+					<input placeholder="Login név" class="textbox" id="login" name="login" type="text" maxlength="45" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="login_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_pass" for="pass">Jelszó:</label>
+					<input class="textbox" id="pass" name="pass" type="password" maxlength="45" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="pass_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_pass2" for="pass2">Jelszó megerősítése:</label>
+					<input class="textbox" id="pass2" name="pass2" type="password" maxlength="45" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="pass2_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_email" for="email">Email cím:</label>
+					<input placeholder="netreg@ktk.bme.hu" class="textbox" id="email" name="email" type="text" maxlength="256" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="email_info" class="ajax_feedback"></span>
+				</div>
+			</div>
+			<div class="section" id="login_window">
+				<div class="article">
+					<label id="lbl_login_auth" for="login_auth">KTK login:</label>
+					<input maxlength="24" placeholder="Login név" class="textbox" id="login_auth" name="login_auth" type="text" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="login_info_auth" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_pass_auth" for="pass_auth">Jelszó:</label>
+					<input class="textbox" id="pass_auth" name="pass_auth" type="password" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="pass_info_auth" class="ajax_feedback"></span>
+				</div>
+			</div>
+			<div class="section" id="ldap_info_section">
+				<input id="ldap_login" name="ldap_login" type="text" />
+				<p>most kiolvasom neked az ldap-ot, jól. ha <a href="javascript:ldap_info();">ide</a> klikkelsz, persze.<br />Jelszóemlékeztető <a href="javascript:pass_reminder();">itt</a>.</p>
+				<p id="ldap_info_p"></p>
+				<!--itt lesz majd egy login form, ha azzal sikerul az ldap auth, akkor nehany input-ot disabled-re rakunk, s ugy vegigmegy ugyanaz, mint uj reg-nel-->
+			</div>
+			<div class="section" id="pass_reminder_section">
+				<div class="article">
+					Add meg a Neptun kódod, a KTK login-od vagy az email címed!
+				</div>
+				<div class="article">
+					<label id="lbl_pass_forgot" for="pass_forgot">Adatod:</label>
+					<input class="textbox" id="pass_forgot" name="pass_forgot" type="text" onfocus="context_help(this.id);" />
+				</div>
+				<span id="pass_reminder_info" class="ajax_feedback">
+					<a href="javascript:send_reminder();">KTK login és új jelszó kiküldése</a>
+				</span>
+			</div>
+			<div class="section" id="content1">
+				<div class="article">
+					<label id="lbl_confirm" for="confirm">Ellenőrző kód:</label>
+					<input maxlength="24" placeholder="Ellenőrző kód" class="textbox" id="confirm" name="confirm" type="text" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="confirm_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_lname" for="lname">Vezetéknév:</label>
+					<input placeholder="Családneved" class="textbox" id="lname" name="lname" type="text" maxlength="45" required="required" onkeyup="return ajax_validate(this.name);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="lname_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_fname" for="fname">Utónév:</label>
+					<input placeholder="Keresztneved" class="textbox" id="fname" name="fname" type="text" maxlength="45" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="fname_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_cname" for="cname">Megjelenítendő név:</label>
+					<select class="textbox" id="cname" name="cname">
+						<option value="lf"></option>
+						<option value="fl"></option>
+					</select>
+					<span id="cname_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_gender" for="gender">Nem:</label>
+					<select class="textbox" id="gender" name="gender">
+						<option value="male">Férfi</option>
+						<option value="female">Nő</option>
+					</select>
+				</div>
+				<div class="article">
+					<label id="lbl_dob" for="dob">Születési idő:</label>
+					<input placeholder="1990-03-14" class="textbox" id="dob" name="dob" type="text" maxlength="13" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="dob_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article" id="article_kep">
+					<label id="lbl_avatar" for="avatar">Kép:</label>
+					<input class="textbox" accept="image/jpeg" id="avatar" name="avatar" type="file" />
+					<input class="textbox" id="avatar_url" name="avatar_url" type="text" />
+				</div>
+			</div>
+			<div class="section" id="content2">
+				<div class="article">
+					<label id="lbl_faculty" for="faculty">Képzés kara:</label>
+					<select class="textbox" id="faculty" name="faculty">
+						<option value="gpk">Gépészmérnöki Kar</option>
+						<option value="ttk">Természettudományi Kar</option>
+						<option value="gtk">Gazdaság- és Társadalomtudományi Kar</option>
+						<option value="vik">Villamosmérnöki és Informatikai Kar</option>
+						<option value="ksk">Közlekedésmérnöki Kar</option>
+						<option value="vbk">Vegyészmérnöki és Biomérnöki Kar</option>
+						<option value="epk">Építészmérnöki Kar</option>
+						<option value="emk">Építőmérnöki Kar</option>
+						<option value="other">Egyéb</option>
+					</select>
+				</div>
+				<div class="article">
+					<label id="lbl_neptun" for="neptun">Neptun kód:</label>
+					<input placeholder="Neptun" class="textbox" id="neptun" name="neptun" type="text" maxlength="6" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="neptun_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_email2" for="email2">Másodlagos email cím:</label>
+					<input placeholder="nem kötelező" class="textbox" id="email2" name="email2" type="text" maxlength="256" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="email2_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_wantmail" for="wantmail">Szeretnék @ktk.bme.hu-s email címet
+						<input id="wantmail" name="wantmail" value="wantmail" type="checkbox" onfocus="context_help(this.id);" />
+					</label>
+					<span id="wantmail_info" class="ajax_feedback"></span>
+				</div>
+			</div>
+			<div class="section" id="content3">
+				<div class="article">
+					<label id="lbl_room" for="room">Szobaszám:</label>
+					<input maxlength="3" placeholder="615" class="textbox" id="room" name="room" type="text" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="room_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_mac" for="mac">MAC cím:</label>
+					<input maxlength="17" placeholder="01:23:45:67:89:ab" class="textbox" id="mac" name="mac" type="text" required="required" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="mac_info" class="ajax_feedback"></span>
+				</div>
+				<div class="article">
+					<label id="lbl_wifi" for="wifi">WiFi MAC cím:</label>
+					<input maxlength="17" placeholder="cd:ef:01:23:45:67" class="textbox" id="wifi" name="wifi" type="text" onkeyup="return ajax_validate(this.id);" onfocus="context_help(this.id);" onblur="return ajax_validate_proper(this.id);" />
+					<span id="wifi_info" class="ajax_feedback"></span>
+				</div>
+			</div>
+			<div class="section" id="content4">
+				<p id="lbl_eula">A szolgáltatás általános szerződési feltételei:</p>
+				<textarea name="eula" id="eula" rows="12" cols="40" readonly="readonly">
+&bull;A számítógépemre telepített valamennyi szoftverért, valamint valamennyi adattárolómon lévő minden állományért TELJES FELELŐSSÉGET vállalok.
+&bull;A Szakkollégium tagjaival kultúrált formában közlöm gondjaimat.
+&bull;A számítógépes hálózatot csak non-profit, a tanulással kapcsolatos tevékenységre használom.
+&bull;Ha a számítógépemet más használja, akkor ezen személy minden tevékenységéért is felelősséget vállalok. Ügyelek arra, hogy illetéktelen személy ne férjen a gépemhez, illetve a hálózathoz.
+&bull;Tudomásul veszem, hogy ha a Kármán Tódor Szakkollégium vezetése úgy ítéli meg, hogy hálózati tevékenységem nem megfelelő, az aktuális időszakra a hálózati kapcsolatomat FIGYELMEZTETÉS NÉLKÜL AZONNAL, AKÁR VÉGLEGESEN IS megszűntetheti.
+&bull;Tudomásul veszem, hogy túlzott mértékű forgalom esetén korlátozást kaphatok (bővebben az Intraneten).
+&bull;Tudomásul veszem, hogy a kollégiumi számítógépes hálózatban TILOS:
+&bull;Peer to Peer programok használata, úgy mint a BearShare, Direct Connect, eDonkey, FastTrack, Gnutella, KaZaA, Morpheus, Napster, WinMX, DC++, BitTorrent stb... (a büntetés 3 hét vagy több).
+&bull;ILLEGÁLIS, A NETIKETTBE ÜTKÖZŐ TEVÉKENYSÉGET FOLYTATNI.
+&bull;Socks, bouncer, redir, irc bot és olyan programokat használni, amely saját/más rendszerbe illetéktelen  behatolást tesz lehetővé (pl: jelszótörő).
+&bull;Olyan programokat használni, amely indokolatlanul nagy terhelést okoznak a szervereken (pl: rc5 törés).
+&bull;Magasabb jogosultságot szerezni és erről nem tájékoztatni a rendszergazdát, más login nevet használni, idegennek átadni a logint.
+&bull;Körlevelet küldeni, spamelni, más nevében levelet küldeni.
+&bull;Törvénybe ütköző anyagokat feltenni/terjeszteni.
+&bull;Bármilyen forgalom-, csomagszűrő-, elkapó-, figyelő programot használni.
+&bull;Tetszőleges firewall, proxy, gateway üzemeltetése (személyi tűzfal használata megengedett).
+&bull;Hálózati adatforgalom hamisítása (IP cím, MAC cím, egyéb azonosítást elősegítő protokoll stack átírása).
+&bull;AKÁRMILYEN szolgáltatást nyújtani (Web, FTP, email stb.) -- Indokolt esetben az állami és diákvezetés engedélyével, valamint a Szakkollégium jóváhagyásával lehet.
+&bull;Tudomásul veszem, hogy a kollégiumi fizikai hálózatban TILOS:
+&bull;Bármilyen szerelés, aktív vagy passzív elem működésének befolyásolása (akár áramtalanítása), rongálása, üzemképtelenné tétele.
+&bull;Hálózati eszköz (switch, router, hub, hálózati megosztásra alkalmas számítógép stb.) hozzátétele, elvétele vagy ideiglenes beiktatása a Szakkollégium előzetes írásos engedélye nélkül.
+&bull;Burkolatok megbontása.
+&bull;A számítógépet nem földelt áramhálózatról üzemeltetni.
+
+&bull;A fentebb nem szabályozott kérdésekben irányadónak elfogadom a https://intranet.ktk.bme.hu linken, a Szabályzat menüpont alatt foglaltakat.
+				</textarea>
+				<div class="article">
+					<label id="lbl_accept" for="accept">Értem és elfogadom a feltételeket
+						<input id="accept" name="accept" value="accept" type="checkbox" />
+					</label>
+				</div>
+			</div>
+		</form>
+		<div id="footer">
+			<p id="copyright">Copyright © 2010, KTKSzSz</p>
+			<div class="article">
+				<input type="button" value="&lt; Vissza" id="prev_btn" onclick="prev();" disabled="disabled" />
+				<input type="button" value="Tovább &gt;" id="next_btn" onclick="next();" />
+			</div>
+		</div>
+	</div>
+	<div>
+		<!-- globalis valtozok xD -->
+		<input id="current_page" name="current_page" type="hidden" value="home" />
+
+		<!-- confirm, vezetek, uto, (NEM), szulinap, (KEP) -->
+		<!-- (faculty), neptun, email2[0], (ktkmail) -->
+		<!-- room, mac, wifi[0] -->
+		<input id="error" name="error" type="hidden" value="1111,10,110" />
+
+		<!-- login, pass, pass, email -->
+		<input id="error_v" name="error_v" type="hidden" value="1111" />
+	</div>
+
+	</body>
+
+</html>
